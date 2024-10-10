@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import imagesrc from "./f2abc89d4bf542b89e1930efcaaeb3cb_35030-pc.jpg";
 import "bootstrap/dist/css/bootstrap.min.css"; // Ensure Bootstrap CSS is imported
 
+// about us jsx to display a container and image
 function AboutUs() {
   return (
     <Container fluid style={{ padding: 0, height: "calc(100vh - 80px)" }}>

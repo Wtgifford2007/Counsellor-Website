@@ -7,37 +7,40 @@ import { Button, Col, Row } from "react-bootstrap";
 import ImageDisplay from "./components/image";
 
 function App() {
+  // variables to determain logged in state and display data
   const [loggedIn, setLoggedIn] = useState(false);
   const [displayData, setDisplayData] = useState({});
 
+  // use effect functino to be called as soon as the page is loaded
   useEffect(() => {
     const storedLoggedInState = localStorage.getItem("loggedIn");
     if (storedLoggedInState === "true") {
       setLoggedIn(true);
     }
-
+    // retreive content
     fetch("http://localhost:5000/get-content")
       .then((response) => response.json())
       .then((data) => {
         setDisplayData(data);
       });
   }, []);
-
+  // see if user has been logged in previously with local storage
   useEffect(() => {
     localStorage.setItem("loggedIn", loggedIn);
   }, [loggedIn]);
 
+  // handlle data change function
   const handleDataChange = (id, newContent) => {
     setDisplayData((prevData) => ({
       ...prevData,
       [id]: newContent,
     }));
   };
-
+  // handle log in function
   const handleLogin = (action) => {
     setLoggedIn(action);
   };
-
+  // jsx code using bootstap to display the home page
   return (
     <>
       <Container className="mt-3">
